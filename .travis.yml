@@ -1,0 +1,16 @@
+language: go
+
+go:
+  - "1.10.x"
+
+services:
+  - docker
+
+env:
+  - DOCKER_IMAGE=chiswicked/go-server
+
+install:
+  - docker build -t $DOCKER_IMAGE .
+
+after_success:
+  - ./bin/push-docker-image
